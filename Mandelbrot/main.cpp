@@ -5,10 +5,14 @@
 
 float width = 1920;
 float height = 1080;
-float xCoordinate = -0.9930165830362011;
-float yCoordinate = 0.25026840977042286;
+float xCoordinate = -0.9710165830362011;
+float yCoordinate = 0.25226840977042286;
+bool enableZoom = false;
 float zoom = 3;
+float step = 0.1;
+float stepSize = 1;
 int maxIterations = 1000;
+int iterationIncrease = 50;
 bool saveImage = false;
 
 using namespace std;
@@ -67,8 +71,8 @@ void generateSet() {
 			for (int y = 0; y < height; y++)
 			{
 				int iterations = 0;
-				float ny = ((static_cast <float>(y) / height) * 2.f - 1.f - 0.5f) / zoom + xCoordinate;
-				float nx = ((static_cast <float>(x) / width) * 2.f - 1.f) / zoom + yCoordinate;
+				float ny = ((static_cast <float>(y) / height) * 2.f - 1.f - 0.5f) / (zoom+step) + xCoordinate;
+				float nx = ((static_cast <float>(x) / width) * 2.f - 1.f) / (zoom+step) + yCoordinate;
 
 				float zx = 0.f;
 				float zy = 0.f;
@@ -95,6 +99,10 @@ void generateSet() {
 				}
 			}
 		}
+		if (enableZoom) {
+			step += stepSize * count * (maxIterations * 0.4);
+			maxIterations += iterationIncrease;
+		}
 		//save the frames to ur directory
 		if (saveImage) {
 			SDL_Surface* frame = SDL_GetWindowSurface(window);
@@ -102,8 +110,9 @@ void generateSet() {
 			std::string file = std::to_string(count) + ".bmp";
 			SDL_SaveBMP(frame, file.c_str());
 			SDL_FreeSurface(frame);
-			count++;
 		}
+		count++;
+
 	}
 	delete[] generatedPalette;
 }
