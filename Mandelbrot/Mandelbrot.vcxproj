@@ -118,6 +118,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
+      <AdditionalIncludeDirectories>..\SDL2-2.0.12\include;..\SDL2-2.0.12\lib\x64;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,6 +144,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\SDL2-2.0.12\lib\x64\SDL2.lib" />
+    <Library Include="..\SDL2-2.0.12\lib\x64\SDL2main.lib" />
+    <Library Include="..\SDL2-2.0.12\lib\x64\SDL2test.lib" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\SDL2-2.0.12\lib\x64\SDL2.dll" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

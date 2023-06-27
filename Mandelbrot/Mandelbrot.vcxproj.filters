@@ -19,4 +19,20 @@
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
+  <ItemGroup>
+    <Library Include="..\SDL2-2.0.12\lib\x64\SDL2.lib">
+      <Filter>Header Files</Filter>
+    </Library>
+    <Library Include="..\SDL2-2.0.12\lib\x64\SDL2main.lib">
+      <Filter>Header Files</Filter>
+    </Library>
+    <Library Include="..\SDL2-2.0.12\lib\x64\SDL2test.lib">
+      <Filter>Header Files</Filter>
+    </Library>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\SDL2-2.0.12\lib\x64\SDL2.dll">
+      <Filter>Header Files</Filter>
+    </None>
+  </ItemGroup>
 </Project>
